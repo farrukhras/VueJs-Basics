@@ -12,12 +12,15 @@
   <!-- This is the root element that we want our Vue instance to control. All of the HTML in this div will be controlled and linked with the 
   Vue instance we created in the app.js file. The Vue instance will link with this div using the id="vue-app". -->
   <div id="vue-app">
-    <h1>{{ greet('afternoon') }}</h1> <!-- to access a method of the vue instance, simply type the method name and () and if there are any parameters in the method then pass those too -->
+    <!-- Data and Methods -->
+    <h1>Data and Methods</h1>
+    <h2>{{ greet('afternoon') }}</h2> <!-- to access a method of the vue instance, simply type the method name and () and if there are any parameters in the method then pass those too -->
     <!-- To display the data from the Vue instance we use either template-syntax or string-interpolation -->
     <p>Name: {{ name }}</p> <!-- The name property is taken directly from the data object in our vue instance -->
     <p>Job: {{ job }}</p>
 
     <!-- Data Binding -->
+    <h1>Data Binding</h1>
     <!-- we have a link in the data in our vue instance. We need to use v-bind directive to bind the data in vue instance to an html tag
     what it does is that, it takes the data in the data element and binds it to to the html tag attribute that we want should have the
     same value as the data element.
@@ -29,6 +32,19 @@
     <!-- the v-html directive will take the entire html tag stored in the data element of vue instance and interpret the stored string
     as an html tag. It tells the browser to interpret the string as an html tag -->
     <p v-html="websiteTag"></p>
+
+    <!-- Events -->
+    <h1>Events</h1>
+    <p>My age: {{ age }}</p>
+    <!-- the v-on derivative gives the ability to use events e.g click, hover, dblclick etc -->
+    <!-- we can also use "@" in place of v-on: -->
+    <button v-on:click="add(1)">Add a Year</button>
+    <button @click="subtract(1)">Subtract a Year</button>
+    <button v-on:dblclick="add(5)">Add 5 Years</button>
+    <button @dblclick="subtract(5)">Subtract 5 Years</button>
+    <br />
+    <br />
+    <div id="canvas" v-on:mousemove="updateXY">{{x}}, {{y}}</div>
   </div> 
 
   <script src="app.js"></script>
