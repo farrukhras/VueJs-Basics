@@ -10,7 +10,9 @@ new Vue({ // this Vue instance will control all of the Vue component.
     websiteTag: '<a href="https://web.whatsapp.com/">WhatsApp Website Web</a>',
     age: 21,
     x: 0,
-    y: 0
+    y: 0,
+    keyName: '',
+    keyAge: ''
   },
   methods: { // methods is like an object. Like data stores all the data elements on the vue instance, methods will store all the functions(methods) for this vue instance
     // greet is the name of the function that we will use to access this function. function() is to tell the vue that treat greet as a function(method)
@@ -30,6 +32,12 @@ new Vue({ // this Vue instance will control all of the Vue component.
     updateXY: function(event) {
       this.x = event.offsetX
       this.y = event.offsetY
+    },
+    logName: function(event) {
+      console.log(event)
+    },
+    logAge: function(event) {
+      console.log(event)
     }
   }
 });
