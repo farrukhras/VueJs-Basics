@@ -14,7 +14,9 @@ new Vue({ // this Vue instance will control all of the Vue component.
     keyName: '',
     keyAge: '',
     a: 0,
-    b: 0
+    b: 0,
+    error: false,
+    success: false,
   },
   methods: { // methods is like an object. Like data stores all the data elements on the vue instance, methods will store all the functions(methods) for this vue instance
     // greet is the name of the function that we will use to access this function. function() is to tell the vue that treat greet as a function(method)

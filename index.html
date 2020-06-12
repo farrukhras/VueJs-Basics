@@ -1,83 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VueJs Practice</title>
-  <link href="styles.css" rel="stylesheet"/>
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VueJs Practice</title>
+    <link href="styles.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <!-- This is the root element that we want our Vue instance to control. All of the HTML in this div will be controlled and linked with the 
+    Vue instance we created in the app.js file. The Vue instance will link with this div using the id="vue-app". -->
+    <div id="vue-app">
+      <!-- Data and Methods -->
+      <h2>Data and Methods</h2>
+      <h3>{{ greet('afternoon') }}</h3> <!-- to access a method of the vue instance, simply type the method name and () and if there are any parameters in the method then pass those too -->
+      <!-- To display the data from the Vue instance we use either template-syntax or string-interpolation -->
+      <p>Name: {{ name }}</p> <!-- The name property is taken directly from the data object in our vue instance -->
+      <p>Job: {{ job }}</p>
 
-  <!-- This is the root element that we want our Vue instance to control. All of the HTML in this div will be controlled and linked with the 
-  Vue instance we created in the app.js file. The Vue instance will link with this div using the id="vue-app". -->
-  <div id="vue-app">
-    <!-- Data and Methods -->
-    <h2>Data and Methods</h2>
-    <h3>{{ greet('afternoon') }}</h3> <!-- to access a method of the vue instance, simply type the method name and () and if there are any parameters in the method then pass those too -->
-    <!-- To display the data from the Vue instance we use either template-syntax or string-interpolation -->
-    <p>Name: {{ name }}</p> <!-- The name property is taken directly from the data object in our vue instance -->
-    <p>Job: {{ job }}</p>
+      <!-- Data Binding -->
+      <h2>Data Binding</h2>
+      <!-- we have a link in the data in our vue instance. We need to use v-bind directive to bind the data in vue instance to an html tag
+      what it does is that, it takes the data in the data element and binds it to to the html tag attribute that we want should have the
+      same value as the data element.
+      We need to use the "". We add the data element from the vue instance inside these "" rather than {{}}. v-bind tells the browser to 
+      find the corresponding data element from the vue instance and display its value. -->
+      <a v-bind:href="website">WhatsApp Web</a>
+      <input type="text" v-bind:value="name"/>
 
-    <!-- Data Binding -->
-    <h2>Data Binding</h2>
-    <!-- we have a link in the data in our vue instance. We need to use v-bind directive to bind the data in vue instance to an html tag
-    what it does is that, it takes the data in the data element and binds it to to the html tag attribute that we want should have the
-    same value as the data element.
-    We need to use the "". We add the data element from the vue instance inside these "" rather than {{}}. v-bind tells the browser to 
-    find the corresponding data element from the vue instance and display its value. -->
-    <a v-bind:href="website">WhatsApp Web</a>
-    <input type="text" v-bind:value="name"/>
+      <!-- the v-html directive will take the entire html tag stored in the data element of vue instance and interpret the stored string
+      as an html tag. It tells the browser to interpret the string as an html tag -->
+      <p v-html="websiteTag"></p>
 
-    <!-- the v-html directive will take the entire html tag stored in the data element of vue instance and interpret the stored string
-    as an html tag. It tells the browser to interpret the string as an html tag -->
-    <p v-html="websiteTag"></p>
+      <!-- Events -->
+      <h2>Events</h2>
+      <p>My age: {{ age }}</p>
+      <!-- the v-on derivative gives the ability to use events e.g click, hover, dblclick etc -->
+      <!-- we can also use "@" in place of v-on: -->
+      <!-- we can add event modifiers to events too, these allow us to modify the behavior of the event e.g. once modifier with the click
+      event will only add the age once. If the button is clicked again, the age wont change.-->
+      <button v-on:click.once="add(1)">Add a Year</button>
+      <button @click="subtract(1)">Subtract a Year</button>
+      <button v-on:dblclick="add(5)">Add 5 Years</button>
+      <button @dblclick="subtract(5)">Subtract 5 Years</button>
+      <br />
+      <br />
+      <!-- <div id="canvas" v-on:mousemove="updateXY">{{x}}, {{y}}</div> -->
+      
+      <!-- Keyboard Events -->
+      <!-- whenever the user enters a character in the input field, the character is logged and the logName/logAge method is fired on each key stroke -->
+      <h2>Keyboard Events</h2>
+      <label>Name:</label>
+      <input type="text" v-on:keyup.enter="logName"/>
+      <label>Age:</label>
+      <input type="text" v-on:keyup.enter="logAge"/>
 
-    <!-- Events -->
-    <h2>Events</h2>
-    <p>My age: {{ age }}</p>
-    <!-- the v-on derivative gives the ability to use events e.g click, hover, dblclick etc -->
-    <!-- we can also use "@" in place of v-on: -->
-    <!-- we can add event modifiers to events too, these allow us to modify the behavior of the event e.g. once modifier with the click
-    event will only add the age once. If the button is clicked again, the age wont change.-->
-    <button v-on:click.once="add(1)">Add a Year</button>
-    <button @click="subtract(1)">Subtract a Year</button>
-    <button v-on:dblclick="add(5)">Add 5 Years</button>
-    <button @dblclick="subtract(5)">Subtract 5 Years</button>
-    <br />
-    <br />
-    <!-- <div id="canvas" v-on:mousemove="updateXY">{{x}}, {{y}}</div> -->
-    
-    <!-- Keyboard Events -->
-    <!-- whenever the user enters a character in the input field, the character is logged and the logName/logAge method is fired on each key stroke -->
-    <h2>Keyboard Events</h2>
-    <label>Name:</label>
-    <input type="text" v-on:keyup.enter="logName"/>
-    <label>Age:</label>
-    <input type="text" v-on:keyup.enter="logAge"/>
+      <!-- Keyboard Events using 2-Way Data Binding -->
+      <!-- whenever the user types a character, the character is stored in the data.name element in the vue instance and at the same time
+      the character(s) is/are displayed on the screen. This is very useful if someone wants to see live updates. The data is first binded 
+      from the input field to the data(name) in the vue instance. At the same time, the data is binded to the {{ name }} in the html file.-->
+      <h3>Keyboard Events using 2-Way Data Binding</h3>
+      <label>Name:</label>
+      <input type="text" v-model="keyName"/>
+      <span>{{ keyName }}</span>
+      <label>Age:</label>
+      <input type="text" v-model="keyAge"/>
+      <span>{{ keyAge }}</span>
 
-    <!-- Keyboard Events using 2-Way Data Binding -->
-    <!-- whenever the user types a character, the character is stored in the data.name element in the vue instance and at the same time
-    the character(s) is/are displayed on the screen. This is very useful if someone wants to see live updates. The data is first binded 
-    from the input field to the data(name) in the vue instance. At the same time, the data is binded to the {{ name }} in the html file.-->
-    <h3>Keyboard Events using 2-Way Data Binding</h3>
-    <label>Name:</label>
-    <input type="text" v-model="keyName"/>
-    <span>{{ keyName }}</span>
-    <label>Age:</label>
-    <input type="text" v-model="keyAge"/>
-    <span>{{ keyAge }}</span>
+      <!-- Computed Properties -->
+      <h2>Computed Properties</h2>
+      <button v-on:click="a++">Add to A</button>
+      <button @click="b++">Add to B</button>
+      <p>A - {{ a }}</p>
+      <p>B - {{ b }}</p>
+      <p>Age + A = {{ addToA }}</p> <!-- addToA is not a method but a computed property, we do not add the () with a computed property-->
+      <p>Age + B = {{ addToB }}</p> <!-- addToB is not a method but a computed property, we do not add the () with a computed property-->
+      
+      <!-- Conditionals -->
+      <!-- we are using the v-if/v-else-if and v-show -->
+      <!-- v-if and v-else-if will display the vue data instance only when the attribute is true. If v-if is true then v-else-if won't
+      be displayed, even if the button is clicked -->
+      <h2>Conditionals</h2>
+      <button v-on:click="error = !error">Toggle Error Status</button>
+      <button v-on:click="success = !success">Toggle Success Status</button>
+      <p v-if="error">There has been an error!!</p>
+      <p v-else-if="success">Whoo, Success :))</p>
+    </div> 
 
-    <!-- Computed Properties -->
-    <h2>Computed Properties</h2>
-    <button v-on:click="a++">Add to A</button>
-    <button @click="b++">Add to B</button>
-    <p>A - {{ a }}</p>
-    <p>B - {{ b }}</p>
-    <p>Age + A = {{ addToA }}</p> <!-- addToA is not a method but a computed property, we do not add the () with a computed property-->
-    <p>Age + B = {{ addToB }}</p> <!-- addToB is not a method but a computed property, we do not add the () with a computed property-->
-  </div> 
-
-  <script src="app.js"></script>
-</body>
+    <script src="app.js"></script>
+  </body>
 </html>
