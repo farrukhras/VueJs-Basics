@@ -80,11 +80,26 @@
       <!-- we are using the v-if/v-else-if and v-show -->
       <!-- v-if and v-else-if will display the vue data instance only when the attribute is true. If v-if is true then v-else-if won't
       be displayed, even if the button is clicked -->
+      <!-- Difference between v-if/v-else-if and v-show is that in v-if/v-else-if, if the condition is true, then the element is displayed
+      else it is commented out by the DOM. In v-show, if the condition is true, then the display property is set to block, else display is
+      set to none-->
       <h2>Conditionals</h2>
       <button v-on:click="error = !error">Toggle Error Status</button>
       <button v-on:click="success = !success">Toggle Success Status</button>
-      <p v-if="error">There has been an error!!</p>
-      <p v-else-if="success">Whoo, Success :))</p>
+      <!-- <p v-if="error">There has been an error!!</p>
+      <p v-else-if="success">Whoo, Success :))</p> -->
+
+      <p v-show="error">There has been an error!!</p>
+      <p v-show="success">Whoo, Success :))</p>
+
+      <!-- Looping with v-for -->
+      <h2>Looping through Lists</h2>
+      <ul>
+        <li v-for="character in characters">{{ character }}</li>
+      </ul>
+      <ul>
+        <li v-for="(char, index) in charDetails">{{ index }}. {{ char.name }} - {{ char.age }}</li>
+      </ul>
     </div> 
 
     <script src="app.js"></script>
