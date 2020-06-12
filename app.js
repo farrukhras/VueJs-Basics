@@ -5,7 +5,9 @@ new Vue({ // this Vue instance will control all of the Vue component.
   el: "#vue-app", // this is the root element. It will link to the root div in index.html file using the id="vue-app". We add a # sign to tell Vue that it is an id referencing to an HTML element
   data: { // the data attribute stores all the data for this Vue instance, this data can be accessed bt the root element in index.html to display different data values in the browser
     name: "Farrukh",
-    job: "Student"
+    job: "Student",
+    website: "https://web.whatsapp.com/",
+    websiteTag: '<a href="https://web.whatsapp.com/">WhatsApp Website Web</a>'
   },
   methods: { // methods is like an object. Like data stores all the data elements on the vue instance, methods will store all the functions(methods) for this vue instance
     // greet is the name of the function that we will use to access this function. function() is to tell the vue that treat greet as a function(method)

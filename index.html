@@ -16,6 +16,19 @@
     <!-- To display the data from the Vue instance we use either template-syntax or string-interpolation -->
     <p>Name: {{ name }}</p> <!-- The name property is taken directly from the data object in our vue instance -->
     <p>Job: {{ job }}</p>
+
+    <!-- Data Binding -->
+    <!-- we have a link in the data in our vue instance. We need to use v-bind directive to bind the data in vue instance to an html tag
+    what it does is that, it takes the data in the data element and binds it to to the html tag attribute that we want should have the
+    same value as the data element.
+    We need to use the "". We add the data element from the vue instance inside these "" rather than {{}}. v-bind tells the browser to 
+    find the corresponding data element from the vue instance and display its value. -->
+    <a v-bind:href="website">WhatsApp Web</a>
+    <input type="text" v-bind:value="name"/>
+
+    <!-- the v-html directive will take the entire html tag stored in the data element of vue instance and interpret the stored string
+    as an html tag. It tells the browser to interpret the string as an html tag -->
+    <p v-html="websiteTag"></p>
   </div> 
 
   <script src="app.js"></script>
