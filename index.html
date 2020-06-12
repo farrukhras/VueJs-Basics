@@ -38,7 +38,9 @@
     <p>My age: {{ age }}</p>
     <!-- the v-on derivative gives the ability to use events e.g click, hover, dblclick etc -->
     <!-- we can also use "@" in place of v-on: -->
-    <button v-on:click="add(1)">Add a Year</button>
+    <!-- we can add event modifiers to events too, these allow us to modify the behavior of the event e.g. once modifier with the click
+    event will only add the age once. If the button is clicked again, the age wont change.-->
+    <button v-on:click.once="add(1)">Add a Year</button>
     <button @click="subtract(1)">Subtract a Year</button>
     <button v-on:dblclick="add(5)">Add 5 Years</button>
     <button @dblclick="subtract(5)">Subtract 5 Years</button>
