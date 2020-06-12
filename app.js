@@ -12,7 +12,9 @@ new Vue({ // this Vue instance will control all of the Vue component.
     x: 0,
     y: 0,
     keyName: '',
-    keyAge: ''
+    keyAge: '',
+    a: 0,
+    b: 0
   },
   methods: { // methods is like an object. Like data stores all the data elements on the vue instance, methods will store all the functions(methods) for this vue instance
     // greet is the name of the function that we will use to access this function. function() is to tell the vue that treat greet as a function(method)
@@ -39,5 +41,17 @@ new Vue({ // this Vue instance will control all of the Vue component.
     logAge: function(event) {
       console.log(event)
     }
+  },
+  computed: { // computed properties are used when the we want to prevent multiple methods from running at the same time on some event 
+  // even though they are not resulting in any change in the logic and/or vue instance.
+  // computed property solves this problem. It only runs the function which is triggered from an event handler.
+  addToA: function() {
+    console.log("adding to A")
+    return this.age + this.a
+  },
+  addToB: function() {
+    console.log("adding to B")
+    return this.age + this.b
+  }
   }
 });
