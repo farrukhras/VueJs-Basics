@@ -100,6 +100,12 @@
       <ul>
         <li v-for="(char, index) in charDetails">{{ index }}. {{ char.name }} - {{ char.age }}</li>
       </ul>
+
+      <!-- Refs -->
+      <h2>Refs</h2>
+      <input type="text" ref="input"/>
+      <button v-on:click="changeRef">Change Name</button>
+      <p>My name is {{ name }}</p>
     </div> 
 
     <script src="app.js"></script>

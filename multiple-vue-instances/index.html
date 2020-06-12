@@ -17,7 +17,7 @@
     <div id="vue-app-two">
       <h2>{{ title }}</h2>
       <p>{{ greet }}</p>
-      <input type="text" v-on:keyup="setTitle"/>
+      <input type="text" ref="input"/>
       <button v-on:click="changeTitle">Click to Change App 1 Title</button>
     </div>
 

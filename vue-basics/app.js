@@ -48,6 +48,10 @@ new Vue({ // this Vue instance will control all of the Vue component.
     },
     logAge: function(event) {
       console.log(event)
+    },
+    changeRef: function() {
+      console.log("here")
+      this.name = this.$refs.input.value;
     }
   },
   computed: { // computed properties are used when the we want to prevent multiple methods from running at the same time on some event 

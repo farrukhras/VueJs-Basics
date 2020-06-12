@@ -20,11 +20,9 @@ var two = new Vue({
     oneTitle: "",
   },
   methods: {
-    setTitle: function(event) {
-      this.oneTitle = event.target.value
-    },
     changeTitle: function() {
-      one.title = this.oneTitle
+      console.log(this.$refs.input.value);
+      one.title = this.$refs.input.value;
     }
   },
   computed: {
