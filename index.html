@@ -12,8 +12,10 @@
   <!-- This is the root element that we want our Vue instance to control. All of the HTML in this div will be controlled and linked with the 
   Vue instance we created in the app.js file. The Vue instance will link with this div using the id="vue-app". -->
   <div id="vue-app">
+    <h1>{{ greet('afternoon') }}</h1> <!-- to access a method of the vue instance, simply type the method name and () and if there are any parameters in the method then pass those too -->
     <!-- To display the data from the Vue instance we use either template-syntax or string-interpolation -->
-    <h1>{{ name }}</h1> <!-- The name property is taken directly from the data object in our vue instance -->
+    <p>Name: {{ name }}</p> <!-- The name property is taken directly from the data object in our vue instance -->
+    <p>Job: {{ job }}</p>
   </div> 
 
   <script src="app.js"></script>
